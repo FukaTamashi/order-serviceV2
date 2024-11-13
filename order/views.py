@@ -13,6 +13,6 @@ class OrderViewSet(viewsets.ModelViewSet):
     http_method_names = ['get', 'post', 'put', 'patch']
 
     def perform_create(self, serializer):
-        user_id = self.request.data.get('user_id')
+        user_id = self.request.data.get('user')
         user = get_object_or_404(User, id=user_id)
         serializer.save(user=user)

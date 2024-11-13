@@ -12,6 +12,3 @@ class OrderSerializer(serializers.ModelSerializer):
         model = Order
         fields = '__all__'
 
-    def validate_user(self, value):
-        validate_user_exists(value.id)
-        return value
