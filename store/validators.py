@@ -1,6 +1,5 @@
 import re
 from django.core.exceptions import ValidationError
-from user.models import User
 
 MIN_AGE = 1
 MAX_AGE = 150
@@ -22,5 +21,6 @@ def validate_age(value):
 
 
 def validate_user_exists(user_id):
+    from user.models import User
     if not User.objects.filter(id=user_id).exists():
         raise ValidationError("User with this ID does not exist.")
