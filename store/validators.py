@@ -1,6 +1,6 @@
 import re
 from django.core.exceptions import ValidationError
-from django.core.validators import MinValueValidator, MaxValueValidator
+from user.models import User
 
 MIN_AGE = 1
 MAX_AGE = 150
@@ -19,3 +19,8 @@ def validate_order_name(value):
 def validate_age(value):
     if value not in range(MIN_AGE, MAX_AGE + 1):
         raise ValidationError(f"{value} is not a valid age,  should be between {MIN_AGE} and {MAX_AGE}")
+
+
+def validate_user_exists(user_id):
+    if not User.objects.filter(id=user_id).exists():
+        raise ValidationError("User with this ID does not exist.")
