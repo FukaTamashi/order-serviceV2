@@ -8,7 +8,6 @@ __pycache__/
 
 .idea/
 
-db.sqlite3
 
 *.log
 *.pot
