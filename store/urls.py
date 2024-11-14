@@ -1,15 +1,17 @@
-
 from django.contrib import admin
-from django.urls import path, include
-from rest_framework.routers import DefaultRouter
-from user.views import UserViewSet
-from order.views import OrderViewSet
-
-router = DefaultRouter()
-router.register(r'users', UserViewSet, basename='user')
-router.register(r'orders', OrderViewSet, basename='order')
+from django.urls import path
+from user.views import UserAPIView
+from order.views import OrderAPIView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/', include(router.urls)),
+
+    # Ручные маршруты для User
+    path('api/users/', UserAPIView.as_view(), name='user-list-create'),
+    path('api/users/<str:pk>/', UserAPIView.as_view(), name='user-detail-update'),
+
+    # Ручные маршруты для Order
+    path('api/orders/', OrderAPIView.as_view(), name='order-list-create'),
+    path('api/orders/<str:pk>/', OrderAPIView.as_view(), name='order-detail-update'),
 ]
+
