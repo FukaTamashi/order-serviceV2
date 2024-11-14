@@ -1,4 +1,3 @@
-from django.shortcuts import render, get_object_or_404
 from rest_framework import viewsets, status
 from rest_framework.response import Response
 
@@ -14,5 +13,4 @@ class OrderViewSet(viewsets.ModelViewSet):
 
     def perform_create(self, serializer):
         user_id = self.request.data.get('user')
-        user = get_object_or_404(User, id=user_id)
-        serializer.save(user=user)
+        serializer.save()

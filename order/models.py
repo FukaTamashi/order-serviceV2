@@ -1,3 +1,5 @@
+import uuid
+
 from django.db import models
 from user.models import User
 from store.validators import validate_order_name
@@ -7,6 +9,7 @@ class Order(models.Model):
     class Meta:
         db_table = 'order'
 
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField(
         max_length=100,
         validators=[validate_order_name]
