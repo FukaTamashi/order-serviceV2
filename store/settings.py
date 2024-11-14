@@ -1,3 +1,4 @@
+import os
 from pathlib import Path
 import environ
 
@@ -9,6 +10,8 @@ env = environ.Env()
 environ.Env.read_env(env_path)
 
 SECRET_KEY = env('DJANGO_SECRET_KEY').strip("'")
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 DEBUG = True
 
