@@ -1,6 +1,5 @@
 from rest_framework import serializers
 
-from store.validators import validate_user_exists
 from .models import User
 
 

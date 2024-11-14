@@ -20,7 +20,3 @@ def validate_age(value):
         raise ValidationError(f"{value} is not a valid age,  should be between {MIN_AGE} and {MAX_AGE}")
 
 
-def validate_user_exists(user_id):
-    from user.models import User
-    if not User.objects.filter(id=user_id).exists():
-        raise ValidationError("User with this ID does not exist.")
